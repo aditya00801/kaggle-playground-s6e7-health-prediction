@@ -9,21 +9,19 @@
 
 ---
 
-# 📌 Overview
+# 📖 Overview
 
 This repository contains my complete solution for the **Kaggle Playground Series – Season 6 Episode 7: Student Health Risk Prediction** competition.
 
-The objective is to predict a student's **health condition** using lifestyle, physical activity, sleep patterns, dietary habits, stress levels, and demographic information.
+The goal is to predict a student's **health condition** based on their lifestyle, sleep habits, physical activity, stress level, dietary information, and other health-related attributes.
 
-This project follows a complete end-to-end machine learning workflow, including data preprocessing, feature engineering, hyperparameter optimization, model evaluation, and final Kaggle submission.
+The project demonstrates a complete machine learning workflow from data preprocessing to model optimization and final Kaggle submission.
 
 ---
 
 # 🎯 Problem Statement
 
-Develop a multiclass classification model capable of predicting a student's health status.
-
-### Target Classes
+Develop a multiclass classification model capable of predicting a student's health status into one of the following categories:
 
 - 🟢 Fit
 - 🟡 At-Risk
@@ -33,16 +31,16 @@ Develop a multiclass classification model capable of predicting a student's heal
 
 # 🚀 Project Highlights
 
-- Complete End-to-End ML Pipeline
-- Extensive Exploratory Data Analysis
-- Advanced Feature Engineering
-- GPU Accelerated CatBoost Training
-- Hyperparameter Optimization using Optuna
+- End-to-End Machine Learning Pipeline
+- Exploratory Data Analysis (EDA)
+- Data Cleaning & Preprocessing
+- Feature Engineering
 - Stratified Cross Validation
-- Class Imbalance Handling
-- Modular Python Project Structure
-- Multiple Saved Models
-- Kaggle Submission Pipeline
+- Optuna Hyperparameter Optimization
+- GPU Accelerated CatBoost Training
+- Automatic Class Weight Balancing
+- Model Evaluation
+- Kaggle Submission Generation
 
 ---
 
@@ -88,19 +86,17 @@ student-health-risk/
 - Python
 - Pandas
 - NumPy
-- Matplotlib
 - Scikit-Learn
 - CatBoost
 - Optuna
+- Matplotlib
 - Jupyter Notebook
 
 ---
 
-# 📊 Dataset Information
+# 📊 Dataset Features
 
-The dataset contains information related to student health and lifestyle.
-
-### Features
+The model is trained using health and lifestyle-related features including:
 
 - Sleep Duration
 - Heart Rate
@@ -116,9 +112,84 @@ The dataset contains information related to student health and lifestyle.
 - Smoking & Alcohol
 - Gender
 
+Additional engineered features:
+
+- Activity Score
+- Hydration Score
+- Exercise-to-Sleep Ratio
+- Calories per Step
+- Water per Exercise
+- BMI Category
+
 ---
 
-# ⚙️ Machine Learning Pipeline
+# 🤖 Final Model
+
+The final solution uses a **GPU-accelerated CatBoostClassifier** optimized with **Optuna** for multiclass classification.
+
+### Model Configuration
+
+| Parameter | Value |
+|-----------|-------|
+| Algorithm | CatBoostClassifier |
+| Objective | MultiClass |
+| Task Type | GPU |
+| Evaluation Metric | TotalF1 |
+| Hyperparameter Optimization | Optuna |
+| Cross Validation | Stratified K-Fold |
+| Random Seed | 42 |
+| Iterations | **3501** |
+| Learning Rate | **0.0729819760** |
+| Depth | **8** |
+| L2 Leaf Regularization | **2.6131** |
+| Random Strength | **1.9111** |
+| Border Count | **244** |
+| Bagging Temperature | **0.5504** |
+
+---
+
+# ⚖️ Class Weights
+
+To address class imbalance, balanced class weights were automatically computed.
+
+| Class | Weight |
+|-------|-------:|
+| At-Risk | **0.3882** |
+| Fit | **5.7792** |
+| Unhealthy | **3.9850** |
+
+---
+
+# 📈 Training Summary
+
+| Metric | Value |
+|---------|------:|
+| Initial TotalF1 | 0.8041 |
+| Final Training TotalF1 | **0.9786** |
+| Training Iterations | **3501** |
+| Training Device | GPU |
+| Optimization | Optuna |
+
+---
+
+# ⭐ Feature Importance
+
+Top contributing features:
+
+1. Sleep Duration
+2. Stress Level
+3. BMI
+4. Physical Activity Level
+5. Smoking & Alcohol
+6. Heart Rate
+7. Activity Score
+8. Water Intake
+9. Calorie Expenditure
+10. Sleep Quality
+
+---
+
+# 🏆 Machine Learning Pipeline
 
 ```
 Raw Dataset
@@ -128,9 +199,6 @@ Exploratory Data Analysis
       │
       ▼
 Data Cleaning
-      │
-      ▼
-Missing Value Handling
       │
       ▼
 Feature Engineering
@@ -156,130 +224,46 @@ Kaggle Submission
 
 ---
 
-# 🤖 Final Model
-
-## Algorithm
-
-**CatBoostClassifier**
-
-CatBoost was selected because it provides excellent performance on structured/tabular datasets and efficiently handles categorical features.
-
-The final model was trained using GPU acceleration and optimized with Optuna.
-
----
-
-# ⚡ Final Model Configuration
-
-| Parameter | Value |
-|------------|------:|
-| Algorithm | CatBoostClassifier |
-| Device | GPU |
-| Objective | Multi-Class Classification |
-| Hyperparameter Optimization | Optuna |
-| Cross Validation | Stratified K-Fold |
-| Evaluation Metric | Balanced Accuracy |
-| Random Seed | 42 |
-
----
-
-# 🔧 Best Hyperparameters
-
-| Parameter | Value |
-|------------|------:|
-| Iterations | **3501** |
-| Learning Rate | **0.07298** |
-| Depth | **8** |
-| Evaluation Metric | **TotalF1** |
-| Class Weights | Balanced |
-
----
-
-# 📈 Model Performance
-
-| Metric | Score |
-|---------|------:|
-| Validation Accuracy | **89%** |
-| Balanced Accuracy | **0.9093** |
-| Cross Validation | Stratified K-Fold |
-| Optimization | Optuna |
-
----
-
-# 🧠 Feature Engineering
-
-Several additional features were engineered to improve model performance.
-
-### Engineered Features
-
-- Activity Score
-- Hydration Score
-- Exercise-to-Sleep Ratio
-- Calories per Step
-- Water per Exercise
-- BMI Category
-
----
-
-# ⭐ Top Feature Importance
-
-| Rank | Feature |
-|------|---------|
-| 1 | Sleep Duration |
-| 2 | Stress Level |
-| 3 | BMI |
-| 4 | Physical Activity Level |
-| 5 | Smoking & Alcohol |
-| 6 | Heart Rate |
-| 7 | Activity Score |
-| 8 | Water Intake |
-| 9 | Calorie Expenditure |
-| 10 | Sleep Quality |
-
----
-
 # 💾 Saved Models
-
-The repository includes multiple trained models.
 
 ```
 output/models/
 
+catboost_optuna_3501iter_v1.cbm
+catboost_optuna_best.cbm
 catboost_final.pkl
 catboost_tuned.pkl
-catboost_optuna_best.cbm
-catboost_optuna_3501iter_v1.cbm
 catboost_fold_5.cbm
 ```
 
 ---
 
-# 📄 Generated Outputs
+# 📄 Outputs
 
 The project generates:
 
 - Trained CatBoost Models
-- Best Hyperparameters
-- Cross Validation Results
-- Submission Files
-- Evaluation Reports
+- Optimized Hyperparameters
+- Evaluation Results
+- Kaggle Submission Files
 
 ---
 
 # 📦 Installation
 
-Clone the repository.
+Clone the repository:
 
 ```bash
 git clone https://github.com/aditya00801/kaggle-playground-s6e7-health-prediction.git
 ```
 
-Move into the project directory.
+Navigate to the project directory:
 
 ```bash
 cd kaggle-playground-s6e7-health-prediction
 ```
 
-Install the required packages.
+Install the required dependencies:
 
 ```bash
 pip install -r requirements.txt
@@ -289,13 +273,13 @@ pip install -r requirements.txt
 
 # ▶️ Running the Project
 
-Launch Jupyter Notebook.
+Launch Jupyter Notebook:
 
 ```bash
 jupyter notebook
 ```
 
-Run the notebooks in the following order:
+Run the notebooks in this order:
 
 1. 01_eda.ipynb
 2. 02_preprocessing.ipynb
@@ -315,14 +299,14 @@ Student Health Risk Prediction
 
 ---
 
-# 📌 Future Improvements
+# 🔮 Future Improvements
 
-- Ensemble Learning
-- Explainable AI using SHAP
+- SHAP Explainability
+- Ensemble Models
 - Automated Feature Selection
-- Model Deployment with Streamlit/FastAPI
-- CI/CD Pipeline
-- Docker Support
+- Streamlit Deployment
+- Docker Containerization
+- CI/CD Integration
 
 ---
 
@@ -330,29 +314,27 @@ Student Health Risk Prediction
 
 **Aditya Kushwaha**
 
-B.Tech CSE (Artificial Intelligence)
+**B.Tech – Computer Science & Engineering (Artificial Intelligence)**
 
-GitHub:
-https://github.com/aditya00801
+📧 Email: adityakushwaha0007@gmail.com
 
-Email:
-adityakushwaha0007@gmail.com
+🐙 GitHub: https://github.com/aditya00801
 
 ---
 
 # ⭐ Support
 
-If you found this project helpful:
+If you found this project useful:
 
-⭐ Star the repository
+⭐ Star this repository
 
-🍴 Fork the repository
+🍴 Fork this repository
 
-📢 Share your feedback
+📝 Share your feedback
 
 ---
 
-## 📜 License
+# 📜 License
 
 This project is licensed under the MIT License.
 
@@ -369,4 +351,3 @@ This project is licensed under the MIT License.
 ---
 
 **Thank you for visiting this repository!**
-```
