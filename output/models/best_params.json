@@ -1,0 +1,20 @@
+{
+    "bootstrap_type": "Bernoulli",
+    "learning_rate": 0.03309416821002669,
+    "depth": 7,
+    "l2_leaf_reg": 10.801507310686478,
+    "random_strength": 0.898531201248234,
+    "border_count": 253,
+    "grow_policy": "Depthwise",
+    "leaf_estimation_iterations": 9,
+    "min_data_in_leaf": 25,
+    "subsample": 0.6828948177465322,
+    "iterations": 1200,
+    "loss_function": "MultiClass",
+    "eval_metric": "MultiClass",
+    "task_type": "GPU",
+    "devices": "0",
+    "random_seed": 42,
+    "verbose": 200,
+    "auto_class_weights": "Balanced"
+}

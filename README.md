@@ -1,73 +1,85 @@
-# 🩺 Student Health Risk Prediction
-### Kaggle Playground Series – Season 6 Episode 7
+# 🏥 Student Health Risk Prediction using CatBoost
 
-![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
-![CatBoost](https://img.shields.io/badge/CatBoost-GPU-yellow.svg)
-![Optuna](https://img.shields.io/badge/Optuna-Hyperparameter%20Optimization-red.svg)
-![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-ML-orange.svg)
-![License](https://img.shields.io/badge/License-MIT-green.svg)
+<p align="center">
 
----
+![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)
+![CatBoost](https://img.shields.io/badge/CatBoost-ML-yellow)
+![Optuna](https://img.shields.io/badge/Optuna-Hyperparameter%20Optimization-red)
+![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B?logo=streamlit)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Status](https://img.shields.io/badge/Status-Completed-success)
 
-# 📖 Overview
-
-This repository contains my complete solution for the **Kaggle Playground Series – Season 6 Episode 7: Student Health Risk Prediction** competition.
-
-The goal is to predict a student's **health condition** based on their lifestyle, sleep habits, physical activity, stress level, dietary information, and other health-related attributes.
-
-The project demonstrates a complete machine learning workflow from data preprocessing to model optimization and final Kaggle submission.
+</p>
 
 ---
 
-# 🎯 Problem Statement
+# 📌 Project Overview
 
-Develop a multiclass classification model capable of predicting a student's health status into one of the following categories:
+**Student Health Risk Prediction** is a Machine Learning project developed to classify students into different health risk categories based on lifestyle, physical activity, sleep patterns, diet, stress levels, and other health-related attributes.
 
-- 🟢 Fit
-- 🟡 At-Risk
-- 🔴 Unhealthy
+The project uses **CatBoost Classifier** combined with **advanced feature engineering** and **Optuna hyperparameter optimization** to achieve high predictive performance.
+
+The final model is named:
+
+> **SHRP-CatBoost-Pro**
 
 ---
 
-# 🚀 Project Highlights
+# 🎯 Objectives
 
-- End-to-End Machine Learning Pipeline
-- Exploratory Data Analysis (EDA)
-- Data Cleaning & Preprocessing
-- Feature Engineering
-- Stratified Cross Validation
+- Predict student health conditions accurately.
+- Handle imbalanced multi-class classification.
+- Improve performance using feature engineering.
+- Optimize CatBoost with Optuna.
+- Deploy a production-ready prediction model.
+
+---
+
+# 🏆 Final Performance
+
+| Metric | Score |
+|---------|-------|
+| Algorithm | CatBoost Classifier |
+| Hyperparameter Tuning | Optuna |
+| Validation | Stratified K-Fold Cross Validation |
+| Evaluation Metric | Balanced Accuracy |
+| **Best Balanced Accuracy** | **0.94985** |
+
+---
+
+# 🚀 Features
+
+- Advanced Feature Engineering
+- CatBoost Classifier
 - Optuna Hyperparameter Optimization
-- GPU Accelerated CatBoost Training
+- GPU Training Support
 - Automatic Class Weight Balancing
-- Model Evaluation
-- Kaggle Submission Generation
+- Feature Importance Analysis
+- Streamlit Web Application
+- Production Ready Model
+- Kaggle Submission Ready
 
 ---
 
 # 📂 Project Structure
 
-```
-student-health-risk/
+```text
+Student-Health-Risk-Prediction/
 │
 ├── data/
 │   ├── train.csv
 │   ├── test.csv
-│   ├── X_processed.csv
-│   └── y.csv
 │
 ├── notebooks/
-│   ├── 01_eda.ipynb
-│   ├── 02_preprocessing.ipynb
-│   ├── 03_Baseline_Model.ipynb
-│   ├── 04_Feature_Engineering.ipynb
-│   ├── 05_Cross_Validation.ipynb
-│   ├── 06_Hyperparameter_Tuning.ipynb
-│   ├── 07_Final_Model.ipynb
-│   └── best_catboost_params.csv
+│   ├── 01_EDA.ipynb
+│   ├── 02_Feature_Engineering.ipynb
+│   ├── 03_CatBoost_Training.ipynb
+│   └── 04_Optuna_Optimization.ipynb
 │
-├── output/
-│   ├── models/
-│   └── submissions/
+├── models/
+│   ├── shrp_catboost_pro_v1_0.94985.cbm
+│   ├── shrp_catboost_pro_best_params.json
+│   └── shrp_catboost_pro_feature_importance.csv
 │
 ├── src/
 │   ├── preprocessing.py
@@ -75,28 +87,21 @@ student-health-risk/
 │   ├── evaluation.py
 │   └── utils.py
 │
-├── .gitignore
+├── submissions/
+│   └── submission_shrp_catboost_pro_0.94985.csv
+│
+├── app.py
+├── requirements.txt
 └── README.md
 ```
 
 ---
 
-# 🛠 Technologies Used
+# 📊 Dataset
 
-- Python
-- Pandas
-- NumPy
-- Scikit-Learn
-- CatBoost
-- Optuna
-- Matplotlib
-- Jupyter Notebook
+The dataset contains student health and lifestyle information.
 
----
-
-# 📊 Dataset Features
-
-The model is trained using health and lifestyle-related features including:
+### Features
 
 - Sleep Duration
 - Heart Rate
@@ -112,90 +117,77 @@ The model is trained using health and lifestyle-related features including:
 - Smoking & Alcohol
 - Gender
 
-Additional engineered features:
+---
+
+# 🧠 Feature Engineering
+
+Additional features created to improve prediction performance include:
 
 - Activity Score
+- Calories Per Step
+- Water Per Exercise
+- Exercise Sleep Ratio
+- Steps Per Minute
+- Calories Per Minute
+- Activity Density
+- Heart Activity
+- Heart Steps
+- BMI Sleep
+- BMI Water
 - Hydration Score
-- Exercise-to-Sleep Ratio
-- Calories per Step
-- Water per Exercise
+- Health Index
 - BMI Category
+- BMI Risk
+- Stress Sleep
+- Activity Diet
+- Gender Activity
+- Smoking Stress
+- Diet Smoking
+
+Total Features Used:
+
+**33 Features**
 
 ---
 
-# 🤖 Final Model
+# 🤖 Model
 
-The final solution uses a **GPU-accelerated CatBoostClassifier** optimized with **Optuna** for multiclass classification.
+## SHRP-CatBoost-Pro
 
-### Model Configuration
+The final model uses:
 
-| Parameter | Value |
-|-----------|-------|
-| Algorithm | CatBoostClassifier |
-| Objective | MultiClass |
-| Task Type | GPU |
-| Evaluation Metric | TotalF1 |
-| Hyperparameter Optimization | Optuna |
-| Cross Validation | Stratified K-Fold |
-| Random Seed | 42 |
-| Iterations | **3501** |
-| Learning Rate | **0.0729819760** |
-| Depth | **8** |
-| L2 Leaf Regularization | **2.6131** |
-| Random Strength | **1.9111** |
-| Border Count | **244** |
-| Bagging Temperature | **0.5504** |
+- CatBoost Classifier
+- Multi-Class Classification
+- Automatic Class Weight Balancing
+- GPU Training
+- Early Stopping
+- Optuna Optimization
 
 ---
 
-# ⚖️ Class Weights
+# ⚙️ Hyperparameter Optimization
 
-To address class imbalance, balanced class weights were automatically computed.
+The model was optimized using **Optuna**.
 
-| Class | Weight |
-|-------|-------:|
-| At-Risk | **0.3882** |
-| Fit | **5.7792** |
-| Unhealthy | **3.9850** |
+### Optimized Parameters
 
----
-
-# 📈 Training Summary
-
-| Metric | Value |
-|---------|------:|
-| Initial TotalF1 | 0.8041 |
-| Final Training TotalF1 | **0.9786** |
-| Training Iterations | **3501** |
-| Training Device | GPU |
-| Optimization | Optuna |
+- Learning Rate
+- Depth
+- L2 Leaf Regularization
+- Random Strength
+- Border Count
+- Grow Policy
+- Leaf Estimation Iterations
+- Minimum Data in Leaf
+- Bootstrap Type
+- Subsample
 
 ---
 
-# ⭐ Feature Importance
+# 📈 Machine Learning Pipeline
 
-Top contributing features:
-
-1. Sleep Duration
-2. Stress Level
-3. BMI
-4. Physical Activity Level
-5. Smoking & Alcohol
-6. Heart Rate
-7. Activity Score
-8. Water Intake
-9. Calorie Expenditure
-10. Sleep Quality
-
----
-
-# 🏆 Machine Learning Pipeline
-
-```
+```text
 Raw Dataset
-      │
-      ▼
-Exploratory Data Analysis
       │
       ▼
 Data Cleaning
@@ -204,19 +196,22 @@ Data Cleaning
 Feature Engineering
       │
       ▼
-Encoding
+Train/Test Split
       │
       ▼
-Cross Validation
+CatBoost Classifier
       │
       ▼
 Optuna Hyperparameter Optimization
       │
       ▼
-GPU CatBoost Training
+Stratified K-Fold Validation
       │
       ▼
-Model Evaluation
+Final Model
+      │
+      ▼
+Prediction
       │
       ▼
 Kaggle Submission
@@ -224,46 +219,57 @@ Kaggle Submission
 
 ---
 
-# 💾 Saved Models
+# 💾 Saved Model
 
 ```
-output/models/
-
-catboost_optuna_3501iter_v1.cbm
-catboost_optuna_best.cbm
-catboost_final.pkl
-catboost_tuned.pkl
-catboost_fold_5.cbm
+models/shrp_catboost_pro_v1_0.94985.cbm
 ```
 
 ---
 
-# 📄 Outputs
+# 📊 Feature Importance
 
-The project generates:
+Feature importance generated using CatBoost helps identify the most influential variables affecting prediction performance.
 
-- Trained CatBoost Models
-- Optimized Hyperparameters
-- Evaluation Results
-- Kaggle Submission Files
+Output File:
+
+```
+models/shrp_catboost_pro_feature_importance.csv
+```
 
 ---
 
-# 📦 Installation
+# 🚀 Installation
 
 Clone the repository:
 
 ```bash
-git clone https://github.com/aditya00801/kaggle-playground-s6e7-health-prediction.git
+git clone https://github.com/yourusername/Student-Health-Risk-Prediction.git
+
+cd Student-Health-Risk-Prediction
 ```
 
-Navigate to the project directory:
+Create virtual environment
 
 ```bash
-cd kaggle-playground-s6e7-health-prediction
+python -m venv .venv
 ```
 
-Install the required dependencies:
+Activate environment
+
+### Windows
+
+```bash
+.venv\Scripts\activate
+```
+
+### Linux
+
+```bash
+source .venv/bin/activate
+```
+
+Install dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -271,42 +277,53 @@ pip install -r requirements.txt
 
 ---
 
-# ▶️ Running the Project
-
-Launch Jupyter Notebook:
+# ▶️ Run Streamlit App
 
 ```bash
-jupyter notebook
+streamlit run app.py
 ```
-
-Run the notebooks in this order:
-
-1. 01_eda.ipynb
-2. 02_preprocessing.ipynb
-3. 03_Baseline_Model.ipynb
-4. 04_Feature_Engineering.ipynb
-5. 05_Cross_Validation.ipynb
-6. 06_Hyperparameter_Tuning.ipynb
-7. 07_Final_Model.ipynb
 
 ---
 
-# 📚 Competition
+# 📈 Results
 
-**Kaggle Playground Series – Season 6 Episode 7**
+✅ Balanced Accuracy
 
-Student Health Risk Prediction
+**0.94985**
+
+✅ Optimized using Optuna
+
+✅ CatBoost GPU Training
+
+✅ Advanced Feature Engineering
+
+✅ Production Ready
 
 ---
 
 # 🔮 Future Improvements
 
-- SHAP Explainability
-- Ensemble Models
-- Automated Feature Selection
-- Streamlit Deployment
-- Docker Containerization
-- CI/CD Integration
+- Ensemble Learning
+- Explainable AI (SHAP)
+- Real-Time Prediction API
+- Docker Deployment
+- CI/CD Pipeline
+- Cloud Deployment (AWS/Azure/GCP)
+
+---
+
+# 🛠️ Technologies Used
+
+- Python
+- Pandas
+- NumPy
+- Scikit-Learn
+- CatBoost
+- Optuna
+- Matplotlib
+- Seaborn
+- Streamlit
+- Jupyter Notebook
 
 ---
 
@@ -314,40 +331,22 @@ Student Health Risk Prediction
 
 **Aditya Kushwaha**
 
-**B.Tech – Computer Science & Engineering (Artificial Intelligence)**
+B.Tech CSE (Artificial Intelligence)
 
-📧 Email: adityakushwaha0007@gmail.com
+Machine Learning | Data Science | Python Developer
 
-🐙 GitHub: https://github.com/aditya00801
+GitHub: https://github.com/aditya00801
+
+LinkedIn: *(Add your LinkedIn profile here)*
 
 ---
 
 # ⭐ Support
 
-If you found this project useful:
-
-⭐ Star this repository
-
-🍴 Fork this repository
-
-📝 Share your feedback
+If you found this project useful, please consider giving it a ⭐ on GitHub!
 
 ---
 
-# 📜 License
+# 📄 License
 
 This project is licensed under the MIT License.
-
----
-
-## 🙏 Acknowledgements
-
-- Kaggle
-- CatBoost
-- Optuna
-- Scikit-Learn
-- Open Source Community
-
----
-
-**Thank you for visiting this repository!**
