@@ -1,127 +1,57 @@
-# 🏥 Student Health Risk Prediction using CatBoost
+# 🏥 Student Health Risk Prediction
 
-<p align="center">
+An end-to-end Machine Learning project that predicts a student's health condition based on lifestyle, physiological, and behavioral factors using an optimized **CatBoost Classifier**.
 
-![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)
-![CatBoost](https://img.shields.io/badge/CatBoost-ML-yellow)
-![Optuna](https://img.shields.io/badge/Optuna-Hyperparameter%20Optimization-red)
-![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B?logo=streamlit)
-![License](https://img.shields.io/badge/License-MIT-green)
-![Status](https://img.shields.io/badge/Status-Completed-success)
-
-</p>
+The project includes data preprocessing, feature engineering, hyperparameter optimization, model explainability, and deployment through a Streamlit web application.
 
 ---
 
-# 📌 Project Overview
+## 🚀 Live Demo
 
-**Student Health Risk Prediction** is a Machine Learning project developed to classify students into different health risk categories based on lifestyle, physical activity, sleep patterns, diet, stress levels, and other health-related attributes.
-
-The project uses **CatBoost Classifier** combined with **advanced feature engineering** and **Optuna hyperparameter optimization** to achieve high predictive performance.
-
-The final model is named:
-
-> **SHRP-CatBoost-Pro**
+**Streamlit App:** *(Add your deployed Streamlit URL here)*
 
 ---
 
-# 🎯 Objectives
+## 📊 Project Overview
 
-- Predict student health conditions accurately.
-- Handle imbalanced multi-class classification.
-- Improve performance using feature engineering.
-- Optimize CatBoost with Optuna.
-- Deploy a production-ready prediction model.
+This project predicts one of the following health conditions:
+
+- 🟢 Fit
+- 🟡 At-Risk
+- 🔴 Unhealthy
+
+using student health and lifestyle information.
 
 ---
 
-# 🏆 Final Performance
+## 📈 Dataset
 
-| Metric | Score |
-|---------|-------|
+| Property | Value |
+|----------|------:|
+| Total Records | **690,088** |
+| Target Classes | **3** |
+| Original Features | **13** |
+| Engineered Features | **20** |
+| Total Features | **33** |
+
+---
+
+## 🧠 Final Model
+
+| Property | Value |
+|----------|------:|
 | Algorithm | CatBoost Classifier |
-| Hyperparameter Tuning | Optuna |
-| Validation | Stratified K-Fold Cross Validation |
+| Hyperparameter Optimization | Optuna |
+| Explainability | SHAP |
+| Cross Validation | Stratified 5-Fold |
 | Evaluation Metric | Balanced Accuracy |
-| **Best Balanced Accuracy** | **0.94985** |
+| **Balanced Accuracy** | **94.985%** |
 
 ---
 
-# 🚀 Features
+## ✨ Feature Engineering
 
-- Advanced Feature Engineering
-- CatBoost Classifier
-- Optuna Hyperparameter Optimization
-- GPU Training Support
-- Automatic Class Weight Balancing
-- Feature Importance Analysis
-- Streamlit Web Application
-- Production Ready Model
-- Kaggle Submission Ready
-
----
-
-# 📂 Project Structure
-
-```text
-Student-Health-Risk-Prediction/
-│
-├── data/
-│   ├── train.csv
-│   ├── test.csv
-│
-├── notebooks/
-│   ├── 01_EDA.ipynb
-│   ├── 02_Feature_Engineering.ipynb
-│   ├── 03_CatBoost_Training.ipynb
-│   └── 04_Optuna_Optimization.ipynb
-│
-├── models/
-│   ├── shrp_catboost_pro_v1_0.94985.cbm
-│   ├── shrp_catboost_pro_best_params.json
-│   └── shrp_catboost_pro_feature_importance.csv
-│
-├── src/
-│   ├── preprocessing.py
-│   ├── feature_engineering.py
-│   ├── evaluation.py
-│   └── utils.py
-│
-├── submissions/
-│   └── submission_shrp_catboost_pro_0.94985.csv
-│
-├── app.py
-├── requirements.txt
-└── README.md
-```
-
----
-
-# 📊 Dataset
-
-The dataset contains student health and lifestyle information.
-
-### Features
-
-- Sleep Duration
-- Heart Rate
-- BMI
-- Calorie Expenditure
-- Step Count
-- Exercise Duration
-- Water Intake
-- Diet Type
-- Stress Level
-- Sleep Quality
-- Physical Activity Level
-- Smoking & Alcohol
-- Gender
-
----
-
-# 🧠 Feature Engineering
-
-Additional features created to improve prediction performance include:
+The project creates several domain-specific features including:
 
 - Activity Score
 - Calories Per Step
@@ -144,140 +74,126 @@ Additional features created to improve prediction performance include:
 - Smoking Stress
 - Diet Smoking
 
-Total Features Used:
+---
 
-**33 Features**
+## 📂 Project Structure
+
+```text
+student-health-risk/
+│
+├── app.py
+├── data/
+├── notebooks/
+├── output/
+│   ├── models/
+│   │   └── shrp_catboost_pro_v1_0.94985.cbm
+│   └── submissions/
+│
+├── src/
+│   ├── preprocessing.py
+│   ├── feature_engineering.py
+│   ├── model.py
+│   └── utils.py
+│
+├── requirements.txt
+└── README.md
+```
 
 ---
 
-# 🤖 Model
+## 🛠️ Technology Stack
 
-## SHRP-CatBoost-Pro
-
-The final model uses:
-
-- CatBoost Classifier
-- Multi-Class Classification
-- Automatic Class Weight Balancing
-- GPU Training
-- Early Stopping
-- Optuna Optimization
-
----
-
-# ⚙️ Hyperparameter Optimization
-
-The model was optimized using **Optuna**.
-
-### Optimized Parameters
-
-- Learning Rate
-- Depth
-- L2 Leaf Regularization
-- Random Strength
-- Border Count
-- Grow Policy
-- Leaf Estimation Iterations
-- Minimum Data in Leaf
-- Bootstrap Type
-- Subsample
+- Python
+- CatBoost
+- Optuna
+- SHAP
+- Pandas
+- NumPy
+- Scikit-learn
+- Streamlit
+- Matplotlib
+- Git & GitHub
 
 ---
 
-# 📈 Machine Learning Pipeline
+## 📊 Machine Learning Pipeline
 
 ```text
 Raw Dataset
       │
       ▼
-Data Cleaning
+Data Preprocessing
       │
       ▼
 Feature Engineering
       │
       ▼
-Train/Test Split
-      │
-      ▼
-CatBoost Classifier
-      │
-      ▼
 Optuna Hyperparameter Optimization
       │
       ▼
-Stratified K-Fold Validation
+CatBoost Training
       │
       ▼
-Final Model
+SHAP Explainability
       │
       ▼
-Prediction
+Final Production Model
       │
       ▼
-Kaggle Submission
+Streamlit Deployment
 ```
 
 ---
 
-# 💾 Saved Model
+## 📋 Input Features
 
-```
-models/shrp_catboost_pro_v1_0.94985.cbm
-```
+### Numerical
+
+- Sleep Duration
+- Heart Rate
+- BMI
+- Calorie Expenditure
+- Step Count
+- Exercise Duration
+- Water Intake
+
+### Categorical
+
+- Diet Type
+- Stress Level
+- Sleep Quality
+- Physical Activity Level
+- Smoking & Alcohol
+- Gender
 
 ---
 
-# 📊 Feature Importance
+## 🎯 Results
 
-Feature importance generated using CatBoost helps identify the most influential variables affecting prediction performance.
-
-Output File:
-
-```
-models/shrp_catboost_pro_feature_importance.csv
-```
+- ✅ Balanced Accuracy: **94.985%**
+- ✅ Optimized using **Optuna**
+- ✅ Explainable using **SHAP**
+- ✅ Interactive Streamlit Web Application
+- ✅ Production-ready CatBoost Model
 
 ---
 
-# 🚀 Installation
+## 💻 Installation
 
 Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/Student-Health-Risk-Prediction.git
-
-cd Student-Health-Risk-Prediction
+git clone https://github.com/aditya00801/Student_Lifestyle_and_Stress_Prediction.git
+cd Student_Lifestyle_and_Stress_Prediction
 ```
 
-Create virtual environment
-
-```bash
-python -m venv .venv
-```
-
-Activate environment
-
-### Windows
-
-```bash
-.venv\Scripts\activate
-```
-
-### Linux
-
-```bash
-source .venv/bin/activate
-```
-
-Install dependencies
+Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
----
-
-# ▶️ Run Streamlit App
+Run the application:
 
 ```bash
 streamlit run app.py
@@ -285,68 +201,28 @@ streamlit run app.py
 
 ---
 
-# 📈 Results
+## 📌 Future Improvements
 
-✅ Balanced Accuracy
-
-**0.94985**
-
-✅ Optimized using Optuna
-
-✅ CatBoost GPU Training
-
-✅ Advanced Feature Engineering
-
-✅ Production Ready
+- XGBoost comparison
+- Model monitoring
+- Docker deployment
+- REST API with FastAPI
+- Cloud deployment
+- CI/CD pipeline
 
 ---
 
-# 🔮 Future Improvements
-
-- Ensemble Learning
-- Explainable AI (SHAP)
-- Real-Time Prediction API
-- Docker Deployment
-- CI/CD Pipeline
-- Cloud Deployment (AWS/Azure/GCP)
-
----
-
-# 🛠️ Technologies Used
-
-- Python
-- Pandas
-- NumPy
-- Scikit-Learn
-- CatBoost
-- Optuna
-- Matplotlib
-- Seaborn
-- Streamlit
-- Jupyter Notebook
-
----
-
-# 👨‍💻 Author
+## 👨‍💻 Author
 
 **Aditya Kushwaha**
 
-B.Tech CSE (Artificial Intelligence)
+B.Tech Computer Science & Engineering (Artificial Intelligence)
 
-Machine Learning | Data Science | Python Developer
-
-GitHub: https://github.com/aditya00801
-
-LinkedIn: *(Add your LinkedIn profile here)*
+- GitHub: https://github.com/aditya00801
+- LinkedIn: *(Add your LinkedIn profile)*
 
 ---
 
-# ⭐ Support
+## ⭐ Repository
 
-If you found this project useful, please consider giving it a ⭐ on GitHub!
-
----
-
-# 📄 License
-
-This project is licensed under the MIT License.
+If you found this project useful, consider giving it a **⭐ Star**.

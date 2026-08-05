@@ -18,7 +18,7 @@ st.set_page_config(
 @st.cache_resource
 def load_model():
     model = CatBoostClassifier()
-    model.load_model("output/models/catboost_optuna_3501iter_v1.cbm")
+    model.load_model("output/models/shrp_catboost_pro_v1_0.94985.cbm")
     return model
 
 model = load_model()
